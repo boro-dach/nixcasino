@@ -5,14 +5,14 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://postgres:NkfV05u8tyfBJ@localhost:5432/nixcasino"
+  url      = "env(DATABASE_URL)"
 }
 
 model User {
-  id        Int      @id
-  name      String
-  balance   Float    @default(0)
-  turnover  Float    @default(0)
+  id          String @id
+  name        String
+  balance     Decimal  @db.Decimal(10, 2) @default(0)
+  turnover    Decimal  @db.Decimal(10, 2)  @default(0)
   gamesPlayed Int    @default(0)
 
   totalDeposits    Float   @default(0)
@@ -21,4 +21,27 @@ model User {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+enum Games {
+  DICE
+  DARTS
+  BASKETBALL
+  BOWLING
+  FOOTBALL
+  CUSTOM
+}
+
+enum Results {
+  WIN
+  LOSE
+}
+
+model GameResult {
+  id        String      @id @default(cuid())
+  userId    String
+  game      Games
+  result    Results
+  profit    Decimal  @db.Decimal(10, 2)
+  createdAt DateTime @default(now())
 }

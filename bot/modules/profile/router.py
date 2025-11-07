@@ -12,7 +12,6 @@ user_data = {}
 
 
 def get_user(user_id: int):
-    """Возвращает данные пользователя, создавая их при необходимости."""
     if user_id not in user_data:
         user_data[user_id] = {
             "balance": 100.0,
@@ -33,7 +32,6 @@ router = Router()
 
 
 async def show_profile(callback: CallbackQuery):
-    """Отображает главный экран профиля. Вынесено в функцию для переиспользования."""
     user = get_user(callback.from_user.id)
 
     account_age = (datetime.now() - user["registration_date"]).days

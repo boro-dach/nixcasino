@@ -13,14 +13,14 @@ router = Router()
 inline_menu = InlineKeyboardMarkup(
     inline_keyboard=[
         [
-            InlineKeyboardButton(text="🎰 Играть", callback_data="inline:play"),
-            InlineKeyboardButton(text="👤 Профиль", callback_data="inline:profile"),
+            InlineKeyboardButton(text="🎰 Играть", callback_data="play"),
+            InlineKeyboardButton(text="👤 Профиль", callback_data="profile"),
             InlineKeyboardButton(text="🎁 Бонус", callback_data="inline:bonus"),
         ],
         [
-            InlineKeyboardButton(text="👥 Рефка", callback_data="inline:ref"),
-            InlineKeyboardButton(text="🎫 Чеки", callback_data="inline:checks"),
-            InlineKeyboardButton(text="🏆 Топ", callback_data="inline:top"),
+            InlineKeyboardButton(text="👥 Рефка", callback_data="ref"),
+            InlineKeyboardButton(text="🎫 Чеки", callback_data="checks"),
+            InlineKeyboardButton(text="🏆 Топ", callback_data="top"),
         ],
     ]
 )
